@@ -313,11 +313,13 @@ void pci_rom_ssdt(const struct device *device)
 		return;
 	}
 
+#if 0
 	const char *scope = acpi_device_path(device);
 	if (!scope) {
 		printk(BIOS_ERR, "%s: Missing ACPI scope\n", dev_path(device));
 		return;
 	}
+#endif
 
 	/* Supports up to four devices. */
 	if ((CBMEM_ID_ROM0 + ngfx) > CBMEM_ID_ROM3) {
@@ -345,7 +347,7 @@ void pci_rom_ssdt(const struct device *device)
 	memcpy(cbrom, rom, cbrom_length);
 
 	/* write _ROM method */
-	acpigen_write_scope(scope);
+	acpigen_write_scope("\\_SB.PCI0.RP01.PEGP");
 	acpigen_write_rom(cbrom, cbrom_length);
 	acpigen_pop_len(); /* pop scope */
 }

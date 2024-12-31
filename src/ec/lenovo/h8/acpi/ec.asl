@@ -331,7 +331,7 @@ Device(EC)
 #include "sleepbutton.asl"
 #include "lid.asl"
 #include "beep.asl"
-#include "thermal.asl"
+//#include "thermal.asl"
 #include "systemstatus.asl"
 #include "thinkpad.asl"
 }
